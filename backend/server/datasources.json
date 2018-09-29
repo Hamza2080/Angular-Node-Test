@@ -1,0 +1,28 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "myfile": {
+    "name": "myfile",
+    "connector": "loopback-component-storage",
+    "provider": "filesystem",
+    "allowedContentTypes": [
+      "image/jpg",
+      "image/jpeg",
+      "image/png"
+    ],
+    "root": "./images"
+  },
+  "mongo": {
+    "host": "localhost",
+    "port": 27017,
+    "url": "",
+    "database": "TestDB",
+    "useNewUrlParser": true,
+    "password": "",
+    "name": "mongo",
+    "user": "",
+    "connector": "mongodb"
+  }
+}

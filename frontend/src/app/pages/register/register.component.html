@@ -1,0 +1,99 @@
+<div class="app flex-row align-items-center">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card mx-4">
+          <div class="card-block p-4">
+            <h1>Register</h1>
+            <p class="text-muted">Create your account</p>
+
+            <div class="alert alert-danger" role="alert" *ngIf="signUpError">
+              <strong>Sorry ! </strong> new user can't created successfully.
+            </div>
+          
+            <div class="alert alert-success" role="alert" *ngIf="emailSend">
+              A confirmation email is send to your email id, please verify email by clicking the link provided in email.
+              <small>if email not found in inbox, please check you spam.</small>
+            </div>
+            
+            <form class="form-horizontal" [formGroup]="signUpForm" (ngSubmit)="submitSignUpForm()" novalidate>
+
+              <!-- email field -->
+              <div class="form-group">
+                <label for="email">Email : </label>
+                <input type="email" class="form-control" placeholder="Email" [formControl]="signUpForm.controls['email']"
+                  [ngClass]="{'signUpForm-control-danger': signUpForm.controls['email'].hasError('required') && signUpForm.controls['email'].touched}">
+                <div style="color:red" class="form-control-feedback" *ngIf="signUpForm.controls['email'].hasError('required') && signUpForm.controls['email'].touched">Email
+                  is required.</div>
+                <div style="color:red" class="form-control-feedback" *ngIf="(signUpForm.controls['email'].invalid && signUpForm.controls['email'].touched && !signUpForm.controls['email'].hasError('required'))">Correct
+                  syntax : example@123.com</div>
+              </div>
+
+              <!-- username -->
+              <div class="form-group">
+                <label for="username">User name : </label>
+                <input type="text" class="form-control" placeholder="User name" [formControl]="signUpForm.controls['username']"
+                  [ngClass]="{'form-control-danger': signUpForm.controls['username'].hasError('required') && signUpForm.controls['username'].touched}">
+                <div style="color:red" class="form-control-feedback" *ngIf="signUpForm.controls['username'].hasError('required') && signUpForm.controls['username'].touched">Username
+                  is required.</div>
+              </div>
+
+              <!-- mobile -->
+              <div class="form-group">
+                <label for="email">Mobile : </label>
+                <input type="number" class="form-control" placeholder="Mobile" [formControl]="signUpForm.controls['mobile']"
+                  [ngClass]="{'form-control-danger': signUpForm.controls['mobile'].hasError('required') && signUpForm.controls['mobile'].touched}">
+                <div style="color:red" class="form-control-feedback" *ngIf="signUpForm.controls['mobile'].hasError('required') && signUpForm.controls['mobile'].touched">Mobile
+                  is required.</div>
+                <div style="color:red" class="form-control-feedback" *ngIf="signUpForm.controls['mobile'].hasError('pattern')">Mobile
+                  must start with 7,8,9 followed with 11 digits from 0-9.</div>
+              </div>
+
+              <!-- DOB -->
+              <div class="form-group">
+                <label for="email">DOB : </label>
+                <input type="date" class="form-control" placeholder="Date of birth" [formControl]="signUpForm.controls['dob']"
+                  [ngClass]="{'form-control-danger': signUpForm.controls['dob'].hasError('required') && signUpForm.controls['dob'].touched}">
+                <div style="color:red" class="form-control-feedback" *ngIf="signUpForm.controls['dob'].hasError('required') && signUpForm.controls['dob'].touched">Date
+                  of birth is required.</div>
+              </div>
+
+              <!-- origin search input -->
+              <label for="source_search">Address : </label>
+              <input id="source_search" type="text" id="pac-input" class="col page-title  google-search-input form-control"
+                placeholder="Search Origin Location..." autocorrect="off" autocapitalize="off" spellcheck="off" #search>
+              <div id="map">
+              </div>
+
+              <!-- password -->
+              <div class="form-group">
+                <label for="email">Password : </label>
+                <input class="form-control" type="password" placeholder="********" [formControl]="signUpForm.controls['password']"
+                  [ngClass]="{'form-control-danger': signUpForm.controls['password'].hasError('required') && signUpForm.controls['password'].touched}">
+                <div style="color:red" class="form-control-feedback" *ngIf="signUpForm.controls['password'].hasError('required') && signUpForm.controls['password'].touched">Password
+                  is required.</div>
+                <div style="color:red" class="form-control-feedback" *ngIf="signUpForm.controls['password'].hasError('pattern')">Password
+                  must be 8 char long having uppercase,lowercase,number and specialcharacter.</div>
+              </div>
+
+              <!-- confirm password -->
+              <div class="form-group">
+                <label for="email">Confirm password : </label>
+                <input class="form-control" type="password" placeholder="********" [formControl]="signUpForm.controls['confirmPassword']"
+                  [ngClass]="{'form-control-danger': signUpForm.controls['confirmPassword'].hasError('required') && signUpForm.controls['confirmPassword'].touched}">
+                <div style="color:red" class="form-control-feedback" *ngIf="signUpForm.controls['confirmPassword'].hasError('required') && signUpForm.controls['confirmPassword'].touched">Please
+                  enter confirm password.</div>
+                <div style="color:red" class="form-control-feedback" *ngIf="!signUpForm.controls['confirmPassword'].hasError('required') && signUpForm.controls.confirmPassword.errors?.MatchPassword">Password
+                  not matched.</div>
+              </div>
+
+              <!-- submit button -->
+              <button type="submit" [disabled]="!signUpForm.valid" style="cursor:pointer" class="btn btn-block btn-success">Create Account</button>
+              <button type="button" class="btn btn-block btn-default mt-1" style="cursor:pointer" routerLink="/../../pages/login">Login</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+1- Write a function which accepts two arrays and inserts the first n elements of the second array into position x of the first array
+and adds the remaining elements of the second array to the end.
+InsertElements(arr1 = [1,2,3,9], arr2 = [4,7,2], pos = 3, count = 2) should return [1,2,4,7,3,9,2]
+
+2- Write a function which takes a string as input and returns an array of strings as follows
+Transform("Magic") should return ["Magic", "mAgic", "maGic", "magIc", "magiC"]
+
+3- Write a function which takes a string input and removes all the characters which appear more than or equal to the given number.
+RemoveCharacters("Spanish", 2) should return "panih"
+RemoveCharacters("Spanish", 3) should return "Spanish"
+
+4- Write a function which takes a string input and returns a function. The returned function should print characters of the string one at a time
+and in a loop.
+
+var xyz = MyFunction('xyz');
+xyz(); // should return 'x' on this first call
+xyz(); // should return 'y' on this second call
+xyz(); // should return 'z' on this third call
+xyz(); // should return 'x' again on this fourth call

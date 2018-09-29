@@ -1,0 +1,57 @@
+{
+  "name": "appuser",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true,
+    "emailVerificationRequired": true
+  },
+  "properties": {
+    "email": {
+      "type": "string",
+      "required": true
+    },
+    "username": {
+      "type": "string",
+      "required": true
+    },
+    "mobile": {
+      "type": "number",
+      "required": true
+    },
+    "lat": {
+      "type": "number",
+      "required": true
+    },
+    "lng": {
+      "type": "number",
+      "required": true
+    },
+    "dob": {
+      "type": "string",
+      "required": true
+    },
+    "jwtoken": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "sendEmail"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW",
+      "property": "getAllUser"
+    }
+  ],
+  "methods": {}
+}
